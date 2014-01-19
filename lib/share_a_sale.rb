@@ -5,7 +5,7 @@ require 'rest-client'
 
 module ShareASale
   SHARE_A_SALE_HOST = "shareasale.com"
-  SHARE_A_SALE_PATH = "/w.cfm"
+  SHARE_A_SALE_PATH = "/x.cfm"
   SHARE_A_SALE_VERSION = "1.8"
 
   class Client < Struct.new(:merchant_id, :token, :api_secret)
@@ -36,7 +36,7 @@ module ShareASale
     end
 
     def url
-      params = [['merchantId', merchant_id], ['token', token], ['version', SHARE_A_SALE_VERSION], ['action', action], ['date', date.strftime("%D")]] + options.to_a
+      params = [['affiliateId', merchant_id], ['token', token], ['version', SHARE_A_SALE_VERSION], ['action', action], ['date', date.strftime("%D")]] + options.to_a
       URI::HTTPS.build(host: SHARE_A_SALE_HOST, path: SHARE_A_SALE_PATH, query: URI.encode_www_form(params)).to_s
     end
 
