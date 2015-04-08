@@ -10,7 +10,27 @@ module ShareASale
 
   class Client < Struct.new(:merchant_id, :token, :api_secret)
     {
-      activity: 'activity'
+      activity: 'activity',
+      summary: 'activitySummary',
+      timespan: 'merchantTimespan',
+      today_stats: 'dailyActivity',
+      month_stats: 'monthlySummary',
+      void_trail: 'voidtrail',
+      traffic: 'traffic',
+      api_token_count: 'apitokencount',
+      products: 'getProducts',
+      invalid_links: 'invalidLinks',
+      order_inquiry: 'orderInquiry',
+      data_feeds: 'merchantDataFeeds',
+      coupons: 'couponDeals',
+      merchant_status: 'merchantStatus',
+      creatives: 'merchantCreative',
+      gift_cards: 'merchantGiftCard',
+      edit_trail: 'edittrail',
+      payments: 'paymentSummary',
+      search_merchant: 'merchantSearch',
+      search_merchant_by_product: 'merchantSearchProduct',
+      ledger: 'ledger'
     }.each do |method, api_action|
       class_eval <<-EORUBY, __FILE__, __LINE__
         def #{method}(options = {}, date = Time.now)
