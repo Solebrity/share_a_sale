@@ -9,7 +9,9 @@ module ShareASale
   SHARE_A_SALE_VERSION = "1.8"
 
   class Client < Struct.new(:merchant_id, :token, :api_secret)
-    { banner_list: "bannerList", transaction_detail: "transactionDetail", reference: "reference" }.each do |method, api_action|
+    {
+      activity: 'activity'
+    }.each do |method, api_action|
       class_eval <<-EORUBY, __FILE__, __LINE__
         def #{method}(options = {}, date = Time.now)
           request('#{api_action}', options, date).execute!
